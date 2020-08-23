@@ -1,16 +1,13 @@
-import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 
 import pandas as pd
-from collections import defaultdict
 import os
 import utils
-from markupsafe import escape
 import lightgbm as lgb
 import numpy as np
 import math
 
-from flask import Flask, render_template, request, Markup
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 '''Prediction Files Here'''
@@ -250,4 +247,4 @@ def fado_types():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='127.0.0.1', port=port, debug = False)
+    app.run(host='127.0.0.1', port=port, debug = True)
