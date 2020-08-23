@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Alatsi' rel='stylesheet'>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<style>
+		body {
+		    font-family: 'Inter';
+		}
+	</style>
+	
+	<title>New York Police Action Board</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	    <div class="d-flex flex-grow-1">
+	        <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+	        <a class="navbar-brand d-none d-lg-inline-block" href="#">
+	            New York Police Action Board
+	        </a>
+	    </div>
+	    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+	        <ul class="navbar-nav ml-auto flex-nowrap">
+	            <li class="nav-item">
+	                <a href="#" class="nav-link m-2 menu-item nav-active">Home</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="#" class="nav-link m-2 menu-item">Search</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="#" class="nav-link m-2 menu-item">Predict</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="#" class="nav-link m-2 menu-item">About</a>
+	            </li>
+	        </ul>
+	    </div>
+	</nav>
+	<br><br><br><br>
+	<div class="container">
+		<div class="row" style="border: 2px solid black">
+			<div class="col-12">
+				<iframe src = "map.html" frameborder="0" scrolling="no" height="400px" width="100%"> </iframe>
+			</div>
+		</div> 
+		<br>
+		<br>
+		<div class="row">
+			<table style="border:2px solid black">
+				<tr>
+					<td style="text-align: center; font-size: 25px; font-family: 'Alatsi';">
+						Case outcomes
+					</td>
+					<td> </td>
+				</tr>
+				<tr>
+					<td style="width: 700px; height: 500px;">
+						<div style="width: 700px; overflow-x:hidden;">
+							<iframe src = "outcomes.html" height="500" width="700" frameborder="0"> </iframe>
+						</div>
+					</td>
+					<td style="font-size: 17px">
+						<ul>
+							<li>
+								<span style="font-weight: bold;">Substantiated:</span> means there is sufficient credible evidence to believe that the subject officer committed the alleged act without legal justification. Substantiated cases are sent to the police department with a disciplinary recommendation.<br><br>
+							</li>
+							<li>
+								<span style="font-weight: bold;">Unsubstantiated:</span> means the available evidence is insufficient to determine whether the officer did or did not commit misconduct.<br><br>
+							</li>
+							<li>
+								<span style="font-weight: bold;">Exonerated:</span> means the subject officer was found to have committed the act alleged, but the officer’s actions were determined to be lawful.<br> <br>
+							</li>
+							<li>
+								<span style="font-weight: bold;">Unfounded:</span> means there is sufficient credible evidence to believe that the subject officer did not commit the alleged act.
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<table style="border:2px solid black">
+				<tr>
+					<td style="text-align: center; font-size: 25px; font-family: 'Alatsi';">
+						Number of complaints over the years
+					</td>
+				</tr>
+				<tr>
+					<td style="height: 300px;">
+						<div style="width: 1170px; overflow-x:hidden;">
+							<iframe src = "timeseries.html" height="300" width="1170" frameborder="0"> </iframe>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<table style="border:2px solid black">
+				<tr>
+					<td style="text-align: center; font-size: 25px; font-family: 'Alatsi';">
+						FADO Allegation ratios
+					</td>
+					<td style="text-align: center; font-size: 25px; font-family: 'Alatsi';">
+						Officer Ranks
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 585px; height: 400px;">
+						<div style="width: 585px; overflow-x:hidden;">
+							<iframe src = "FADO_Types.html" height="400" width="585" frameborder="0"> </iframe>
+						</div>
+					</td>
+					<td style="width: 585px; height: 400px;">
+						<div style="width: 585px; overflow-x:hidden;">
+							<iframe src = "Top_Ranks.html" height="400" width="585" frameborder="0"> </iframe>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<table style="border:2px solid black">
+				<tr>
+					<td style="text-align: center; font-size: 25px; font-family: 'Alatsi';">
+						Top Allegations
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 1170px; height: 600px;">
+						<div style="width: 1170px; overflow-x:hidden;">
+							<iframe src = "Top_Allegations.html" height="600" width="1170" frameborder="0"> </iframe>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<br><br>
+</body>
+</html>
