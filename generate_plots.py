@@ -113,6 +113,8 @@ def generate_map():
  
 utils.save_pickle('data/outcome_labels.pkl', OUTCOME_LABELS)
 utils.save_pickle('data/outcome_parents.pkl', OUTCOME_PARENTS)
+utils.save_pickle('data/sustained_list.pkl', SUSTAINED)
+utils.save_pickle('data/unsustained_list.pkl', UNSUSTAINED)
 
 generate_map()
 utils.get_timeseries_plot(data, 'Incident Date', 'Unique Id', 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Alatsi' rel='stylesheet'>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<style>
+		body {
+		    font-family: 'Inter';
+		}
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        }
+
+        .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+        }
+
+        .about-section {
+        padding-top: 50px;
+        margin-top: 100px;
+        padding: 50px;
+        text-align: justify;
+        background-color: #474e5d;
+        color: white;
+        }
+
+        .container {
+        padding: 0 16px;
+        }
+
+        .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+
+        .title {
+        color: grey;
+        }
+
+        @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+        }
+	</style>
+	
+	<title>New York Police Action Board</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	    <div class="d-flex flex-grow-1">
+	        <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+	        <a class="navbar-brand d-none d-lg-inline-block" href="/">
+	            New York Police Action Board
+	        </a>
+	    </div>
+	    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+	        <ul class="navbar-nav ml-auto flex-nowrap">
+	            <li class="nav-item">
+	                <a href="/home" class="nav-link m-2 menu-item">Home</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="/search" class="nav-link m-2 menu-item">Search</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="/predict" class="nav-link m-2 menu-item">Predict</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="/about" class="nav-link m-2 menu-item nav-active">About</a>
+	            </li>
+	        </ul>
+	    </div>
+    </nav>
+
+
+    <div class="about-section">
+        <h1 style="text-align:center">About this Project</h1>
+        <p>This website was designed as an interactive repository of formal complaints registered against NYPD officers. We have published this website to practice the same transparency we advocate for police departments, and in the hopes that it will be useful for other jurisdictions. We welcome contributions and improvements towards achieving the same goal.</p>
+        <p>The information we provide comes primarily from data provided by the Civilian Complaint Review Board (CCRB). We cannot guarantee the accuracy of this data - instead we commit ourselves to being honest about flaws, transparent in our publishing process, and welcoming of critiques. Thank you!
+        </p>
+        <p>This data ranges from January 1986 to July 2020 and only contains cases that have been fully investigated and closed by the CCRB. There may be a drop in the number of cases since the begining of 2020 because recent cases may not have been fully investigated yet.</p>
+        <p>Citations:</p>
+        <cite><a href="https://github.com/new-york-civil-liberties-union/NYPD-Misconduct-Complaint-Database" style="color: white;">NY Civil Liberties Union</a></cite><br>
+        <cite><a href="https://www.nyclu.org/en/campaigns/nypd-misconduct-database" style="color: white;">NYPD MISCONDUCT COMPLAINT DATABASE</a></cite><br>
+        <cite><a href="https://www.kaggle.com/asimislam/civilian-complaints-against-nyc-police-officers?" style="color: white;">Kaggle - Civilian Complaints against NYC Police Officers</a></cite>
+    </div>
+
+
+
+
+
+    </body>
+    </html>

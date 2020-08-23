@@ -3,7 +3,7 @@
 <head>
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
-	
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Alatsi' rel='stylesheet'>
@@ -17,14 +17,9 @@
 		body {
 		    font-family: 'Inter';
 		}
-		table {
-		  display:block;
-		  height : 800px;
-		  overflow-y : scroll;
-		}
 	</style>
 	
-	<title>Search Police Records</title>
+	<title>Allegations against {{ name }}</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -53,20 +48,22 @@
 	</nav>
 	<br><br><br><br>
 	<div class="container">
-		<form action="/search" method="POST">
-	          <div class="row mb-4" align="center">
-	            <div class="form-group col-md-4 offset-md-3">
-	              <input type="text" placeholder="Enter a Police Officer's name" class="form-control form-control-underlined" name = "name">
-	            </div>
-	            <div class="form-group col-md-2">
-	              <button type="submit" class="btn btn-primary rounded-pill btn-block shadow-sm">Search</button>
-	            </div>
-	          </div>
-	    </form>
-	    <br><br><br><br>
-	    <div class="row table" style="font-size: 12px;">
-	    	{{ data | safe }}
-	    </div>
+		<div class="row">
+			<table style="border:2px solid black">
+				<tr>
+					<td style="text-align: center; font-size: 25px; font-family: 'Alatsi';">
+						Allegations against {{ name }}
+					</td>
+				</tr>
+				<tr>
+					<td style="height: 300px;">
+						<div style="width: 1170px; overflow-x:hidden;">
+							<iframe src = "/details/{{ cop_id }}" height="1000" width="1170" frameborder="0"> </iframe>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
