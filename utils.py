@@ -60,8 +60,12 @@ def get_timeseries_plot(df, date_col, count_col, freq = "M", return_trace = Fals
     counts = df.set_index(date_col).groupby(pd.Grouper(freq = freq)).count()[count_col]
     counts = counts[counts.index.year > 1985]
     
-    trace = go.Scatter(x = counts.index, y = counts, hovertemplate = '%{x}: %{y}<extra></extra>', name = "Total")
-    fig = go.Figure(data = trace)
+    total_trace = go.Scatter(x = counts.index, y = counts, hovertemplate = '%{x}: %{y}<extra></extra>', name = "Total allegations")
+    
+    if return_trace:
+        return total_trace
+    
+    fig = go.Figure(data = total_trace)
     
     for typ in list(set(df['FADO Type'])):
         counts = df[df['FADO Type'] == typ].set_index(date_col).groupby(pd.Grouper(freq = freq)).count()[count_col]
@@ -71,9 +75,6 @@ def get_timeseries_plot(df, date_col, count_col, freq = "M", return_trace = Fals
     
     fig.update_layout(template = 'plotly_white', 
                       margin = dict(t = 1, b = 0, r = 0, l = 0))
-    
-    if return_trace:
-        return trace
     
     if filename is not None:
         fig.write_html(filename, include_plotlyjs = 'cdn')

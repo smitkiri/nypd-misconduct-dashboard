@@ -6,9 +6,14 @@ import utils
 import lightgbm as lgb
 import numpy as np
 import math
+from google.cloud import storage
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
+
+CLOUD_STORAGE_BUCKET = os.environ['NYPAB_BUCKET']
+gcs = storage.Client()
+bucket = gcs.get_bucket(CLOUD_STORAGE_BUCKET)
 
 '''Prediction Files Here'''
 model = lgb.Booster(model_file='data/lgb_classifier.txt')
@@ -60,12 +65,6 @@ UNSUSTAINED = utils.open_pickle('data/unsustained_list.pkl')
 template_files = ['map.html', 'FADO_Types.html', 'outcomes.html', 
                   'timeseries.html', 'Top_Allegations.html', 
                   'Top_Ranks.html']
-
-# If plots not present, generate them
-for t in template_files:
-    if t not in os.listdir('templates'):
-        import generate_plots
-        break
     
 def get_individual_plots(cop_data, filename = None):    
     fig = make_subplots(
@@ -118,7 +117,12 @@ def get_individual_plots(cop_data, filename = None):
     fig.update_layout(height = 1000, width = 1000)
     
     if filename is not None:
-        fig.write_html(filename)
+        filepath = '/tmp/' + filename
+        fig.write_html(filepath, include_plotlyjs = 'cdn')
+        blob = bucket.blob(filename)
+        blob.upload_from_filename(filepath)
+        blob.make_public()
+        return blob.public_url
     else:
         fig.show()
         
@@ -158,24 +162,15 @@ def search():
 @app.route('/search/<cop_id>')
 def police_details(cop_id):
     subset = data[data['id'] == cop_id]
-    if os.path.isfile('templates/details/'+cop_id+'.html'):
-        return render_template('police_details.html', name = list(set(subset['Name']))[0], 
-                           cop_id = cop_id)
-    
-    get_individual_plots(subset, filename = 'templates/details/'+cop_id+'.html')
+    url = get_individual_plots(subset, filename = cop_id+'.html')
     return render_template('police_details.html', name = list(set(subset['Name']))[0], 
-                           cop_id = cop_id)
+                           url = url)
 
-@app.route('/details/<cop_id>')
-def details(cop_id):
-    return render_template('details/'+cop_id+'.html')
 
+@app.route('/prediction', methods=['GET', 'POST'])
 @app.route('/predict', methods=['GET', 'POST'])
 def prediction():
     final_prediction = ''
-
-    '''if request.method == "GET":
-        return render_template('form.html')'''
     if request.method == "POST":
         rank_incident = request.form['rank_incident']	
         mos_ethnicity = request.form['mos_ethnicity']
