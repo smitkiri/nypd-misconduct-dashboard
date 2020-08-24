@@ -40,7 +40,7 @@ fado_mapping = {'Abuse of Authority': 0,'Force': 1,'Discourtesy': 2,'Offensive L
 '''End Here'''
 
 
-data = pd.read_excel('NYPD-Misconduct-Complaint-Database/CCRB_database_raw.xlsx')
+data = pd.read_excel('https://raw.githubusercontent.com/new-york-civil-liberties-union/NYPD-Misconduct-Complaint-Database/master/CCRB_database_raw.xlsx')
 
 # Remove extra spaces
 data['Rank'] = data['Rank'].str.replace(' ', '')
