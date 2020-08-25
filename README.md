@@ -1,6 +1,6 @@
 # nypd-misconduct-dashboard
 
-This project was built as a part of [Hack for the People](https://hackforthepeople.com/) hackathon. You can see a demo of the dashboard [here](https://youtu.be/gaBmz1Xx1_0). Also, [see the submission on Devpost](https://devpost.com/software/new-york-police-action-board).
+This project was built as a part of [Hack for the People](https://hackforthepeople.com/) hackathon. You can see a demo of the dashboard [here](https://nypab.xyz). Also, [see the submission on Devpost](https://devpost.com/software/new-york-police-action-board).
 
 ## Inspiration
 
