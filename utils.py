@@ -12,11 +12,11 @@ def get_command(x, command_key):
 
 def get_command_key():
     #Get command abbreviations
-    command_df = pd.read_excel('NYPD-Misconduct-Complaint-Database/CCRB_filespecs.xlsx', 
+    command_df = pd.read_excel('NYPD-Misconduct-Complaint-Database-Updated/CCRB Filespecs 04.20.2021.xlsx',
                                 sheet_name = 'Tab3_Command Key')
     command_df['Command Abrev.'] = command_df['Command Abrev.'].apply(lambda x: ''.join(x.split(' ')).lower())
     
-    return command_df.set_index(command_df['Command Abrev.'])['Command'].to_dict()
+    return command_df.set_index(command_df['Command Abrev.'])['Command Desc.'].to_dict()
 
 def get_rank_key():
     # Get rank abbreviations

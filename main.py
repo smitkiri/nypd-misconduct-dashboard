@@ -40,21 +40,21 @@ fado_mapping = {'Abuse of Authority': 0,'Force': 1,'Discourtesy': 2,'Offensive L
 '''End Here'''
 
 
-data = pd.read_excel('https://raw.githubusercontent.com/new-york-civil-liberties-union/NYPD-Misconduct-Complaint-Database/master/CCRB_database_raw.xlsx')
+data = pd.read_csv('https://raw.githubusercontent.com/new-york-civil-liberties-union/NYPD-Misconduct-Complaint-Database-Updated/main/CCRB%20Complaint%20Database%20Raw%2004.20.2021.csv')
 
 # Remove extra spaces
-data['Rank'] = data['Rank'].str.replace(' ', '')
-data['Board Disposition'] = data['Board Disposition'].apply(
+data['IncidentRankLong'] = data['IncidentRankLong'].str.replace(' ', '')
+data['CCRBDisposition'] = data['CCRBDisposition'].apply(
     lambda text: ' '.join(list(filter(None, text.split(' ')))) if isinstance(text, str) else text)
 
 # Remove unused column
 data.drop('AsOfDate', axis = 1, inplace = True)
 
 # Add a full name column
-data['id'] = (data['First Name'] + data['Last Name']).str.lower()
-data['First Name'] = data['First Name'] + ' ' + data['Last Name']
-data = data.rename(columns = {'First Name': 'Name'})
-data.drop('Last Name', axis = 1, inplace = True)
+data['id'] = (data['FirstName'] + data['LastName']).str.lower()
+data['FirstName'] = data['FirstName'] + ' ' + data['LastName']
+data = data.rename(columns = {'FirstName': 'Name'})
+data.drop('LastName', axis = 1, inplace = True)
 
 
 OUTCOME_LABELS = utils.open_pickle('data/outcome_labels.pkl')
@@ -74,12 +74,12 @@ def get_individual_plots(cop_data, filename = None):
     subplot_titles = ("Allegation History", "FADO Types", "Top Allegations", "Outcomes")
     )
     
-    scatter_trace = utils.get_timeseries_plot(cop_data[~cop_data['Incident Date'].isnull()], 'Incident Date', 'Unique Id', return_trace = True)
-    pie_trace = utils.get_pie_counts(cop_data, 'FADO Type', 'Unique Id', return_trace = True)
-    bar_trace = utils.get_hbar_plot(cop_data, 'Allegation', 'Unique Id', return_trace = True)
+    scatter_trace = utils.get_timeseries_plot(cop_data[~cop_data['IncidentDate'].isnull()], 'IncidentDate', 'Unique Id', return_trace = True)
+    pie_trace = utils.get_pie_counts(cop_data, 'FADOType', 'AllegationID', return_trace = True)
+    bar_trace = utils.get_hbar_plot(cop_data, 'Allegation', 'AllegationID', return_trace = True)
     
-    cop_outcomes_df = cop_data['Board Disposition'].value_counts().reset_index().rename(
-        columns = {'index': 'Disposition', 'Board Disposition': 'count'})
+    cop_outcomes_df = cop_data['CCRBDisposition'].value_counts().reset_index().rename(
+        columns = {'index': 'Disposition', 'CCRBDisposition': 'count'})
     
     cop_outcomes_df = utils.add_newlines(cop_outcomes_df)
     
@@ -87,7 +87,7 @@ def get_individual_plots(cop_data, filename = None):
     
     cop_outcomes['Allegations'] = len(cop_data)
     
-    unknown_cnt = cop_data['Board Disposition'].isna().sum()
+    unknown_cnt = cop_data['CCRBDisposition'].isna().sum()
     if unknown_cnt != 0:
         cop_outcomes['Unknown'] = unknown_cnt
     
